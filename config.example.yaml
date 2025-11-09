@@ -1,0 +1,15 @@
+base_url: "https://ctf.example.com"
+api_token: ""             # 優先。環境変数 CTFD_API_TOKEN からも読み込み可能
+username: ""              # token がない場合に使用。環境変数 CTFD_USERNAME からも読み込み可能
+password: ""               # 環境変数 CTFD_PASSWORD からも読み込み可能
+output_dir: "./challenges"
+concurrency: 4
+retry:
+  max_attempts: 3
+  backoff_base: 2
+file:
+  overwrite: false
+  sanitize_names: true
+logging:
+  level: INFO
+
