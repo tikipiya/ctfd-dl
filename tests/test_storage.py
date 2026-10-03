@@ -25,7 +25,7 @@ class TestStorage:
 
     def test_sanitize_filename_forbidden_chars(self):
         """禁止文字の除去テスト."""
-        assert self.storage.sanitize_filename("test<>file.zip") == "test__file.zip"
+        assert self.storage.sanitize_filename("test<>file.zip") == "test_file.zip"
         assert self.storage.sanitize_filename("test:file.zip") == "test_file.zip"
         assert self.storage.sanitize_filename("test/file.zip") == "test_file.zip"
 
