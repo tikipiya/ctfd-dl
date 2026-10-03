@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="ctfd-dl",
-    version="1.0.2",
+    version="1.1.0",
     author="tikisan",
     author_email="",
     description="CTFd challenge downloader and organizer",
