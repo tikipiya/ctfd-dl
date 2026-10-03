@@ -27,15 +27,19 @@ class CTFdClient:
             username: ユーザ名（Tokenがない場合）
             password: パスワード（Tokenがない場合）
         """
-        self.base_url = base_url.rstrip("/")
+        url_str = (base_url or "").strip().rstrip("/")
+        if url_str and not (url_str.startswith("http://") or url_str.startswith("https://")):
+            url_str = f"https://{url_str}"
+
+        self.base_url = url_str
         self.api_token = api_token
         self.username = username
         self.password = password
         self.session = requests.Session()
         self.authenticated = False
 
-        # HTTPS を強制
-        if not self.base_url.startswith("https://"):
+        # HTTPS をチェック
+        if self.base_url and not self.base_url.startswith("https://"):
             logger.warning(f"BASE_URL が HTTPS ではありません: {self.base_url}")
 
     def authenticate(self) -> bool:
