@@ -168,7 +168,7 @@ def main():
                 continue
 
             # source_url を追加
-            detail["source_url"] = f"{base_url}/challenges/{challenge_id}"
+            detail["source_url"] = f"{client.base_url}/challenges/{challenge_id}"
 
             # ディレクトリを作成
             challenge_dir = storage.get_challenge_dir(category, challenge_name)

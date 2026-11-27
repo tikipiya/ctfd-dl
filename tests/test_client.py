@@ -7,6 +7,14 @@ from ctfd_downloader.client import CTFdClient
 class TestCTFdClient:
     """CTFdClient のテスト."""
 
+    def test_base_url_trailing_slash_stripped(self):
+        """末尾スラッシュ付き base_url の正規化テスト."""
+        client = CTFdClient(base_url="https://ctf.example.com/")
+        assert client.base_url == "https://ctf.example.com"
+        challenge_id = 1
+        source_url = f"{client.base_url}/challenges/{challenge_id}"
+        assert source_url == "https://ctf.example.com/challenges/1"
+
     def test_get_file_url_absolute(self):
         """絶対URLの処理テスト."""
         client = CTFdClient(base_url="https://ctf.example.com")
