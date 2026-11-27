@@ -88,6 +88,16 @@ logging:
         self.assertEqual(config.get("retry.backoff_base"), 2.0)
         self.assertEqual(config.get("logging.level"), "INFO")
 
+    def test_base_url_trailing_slash_stripped(self):
+        """base_url 末尾のスラッシュが除去されること."""
+        content = """
+base_url: "https://ctf.example.com/"
+"""
+        path = self.create_yaml_file(content)
+        config = Config(path)
+
+        self.assertEqual(config.get("base_url"), "https://ctf.example.com")
+
     def test_base_url_scheme_autofix(self):
         """base_url にスキームが付いていない場合への自動付加."""
         content = """

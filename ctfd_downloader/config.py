@@ -65,7 +65,7 @@ class Config:
         # base_url の正規化
         base_url = self.config.get("base_url")
         if base_url and isinstance(base_url, str):
-            base_url = base_url.strip()
+            base_url = base_url.strip().rstrip("/")
             if base_url and not (base_url.startswith("http://") or base_url.startswith("https://")):
                 base_url = f"https://{base_url}"
             self.config["base_url"] = base_url
